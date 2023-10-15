@@ -1,0 +1,48 @@
+
+from tkinter import *
+  
+  
+root = Tk() 
+  
+# Create Title 
+root.title(  "Paint App ") 
+  
+# specify size 
+root.geometry("500x350") 
+  
+# define function when   
+# mouse double click is enabled 
+def display( event ): 
+     
+    # Co-ordinates. 
+    x1, y1, x2, y2 = ( event.x - 3 ),  
+    ( event.y - 3 ), ( event.x + 3 ),  
+    ( event.y + 3 )  
+      
+    # Colour 
+    Colour = "#000fff000" 
+      
+    # specify type of display 
+    w.create_line( x1, y1, x2,y2, fill = Colour ) 
+  
+
+def paint(event):
+    x1, y1 = (event.x), (event.y)
+    x2, y2 = (event.x + 1), (event.y + 1)
+    w.create_oval((x1, y1, x2, y2), fill='black', width=10)
+    
+
+
+# create canvas widget. 
+w = Canvas(root, width = 400, height = 250)  
+  
+# call function when double  
+# click is enabled. 
+w.bind( "<B1-Motion>", paint) 
+  
+# create label. 
+l = Label( root, text = "Double Click and Drag to draw." ) 
+l.pack() 
+w.pack() 
+  
+mainloop() 
